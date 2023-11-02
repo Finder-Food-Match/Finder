@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Home from "./pages/Home";
+import { ClerkProvider, SignIn } from "@clerk/clerk-react";
 function App() {
+  const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ClerkProvider publishableKey={clerkPubKey}>
+        <Router>
+          <Routes>
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/home" element={<Home />} />
+          </Routes>
+        </Router>
+      </ClerkProvider>
     </div>
   );
 }

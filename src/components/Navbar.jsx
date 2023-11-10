@@ -4,8 +4,8 @@ import { ReactComponent as ExploreIcon } from "../assets/svg/exploreIcon.svg";
 import { ReactComponent as PersonOutlineIcon } from "../assets/svg/personOutlineIcon.svg";
 
 function Navbar() {
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
   const pathMatchRoute = (route) => {
     if (route === location.pathname) {
       return true;
@@ -16,7 +16,7 @@ function Navbar() {
       <footer className="navbar">
         <nav className="navbarNav">
           <ul className="navbarListItems">
-            <li className="navbarListItem">
+            <li className="navbarListItem" onClick={() => navigate("/")}>
               <ExploreIcon
                 fill={pathMatchRoute("/") ? "#2c2c2c" : "#8f8f8f"}
                 width="36px"
@@ -24,15 +24,15 @@ function Navbar() {
               />
               <p className={"navbarListItemName"}>Swipe</p>
             </li>
-            <li className="navbarListItem">
+            <li className="navbarListItem" onClick={() => navigate("/liked")}>
               <OfferIcon
-                fill={pathMatchRoute("/swipe") ? "#2c2c2c" : "#8f8f8f"}
+                fill={pathMatchRoute("/liked") ? "#2c2c2c" : "#8f8f8f"}
                 width="36px"
                 height="36px"
               />
               <p className={"navbarListItemName"}>Liked</p>
             </li>
-            <li className="navbarListItem">
+            <li className="navbarListItem" onClick={() => navigate("/profile")}>
               <PersonOutlineIcon
                 fill={pathMatchRoute("/profile") ? "#2c2c2c" : "#8f8f8f"}
                 width="36px"

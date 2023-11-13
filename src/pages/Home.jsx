@@ -13,7 +13,9 @@ function Home() {
           <UserButton />
         </div>
         <div className="homeBtnContainer">
-          <button className="homeBtn">Swipe</button>
+          <button className="homeBtn" onClick={() => navigate("/CreateLobby")}>
+            Swipe Lobby
+          </button>
           <button className="homeBtn" onClick={() => navigate("/profile")}>
             Profile
           </button>

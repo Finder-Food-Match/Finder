@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Liked from "./pages/Liked";
 import Profile from "./pages/Profile";
+import CreateLobby from "./pages/CreateLobby";
 import {
   ClerkProvider,
   SignIn,
@@ -61,6 +62,19 @@ function App() {
                   </SignedOut>
                 </>
               }
+            />
+            <Route
+                path="/CreateLobby"
+                element={
+                  <>
+                    <SignedIn>
+                      <CreateLobby/>
+                    </SignedIn>
+                    <SignedOut>
+                      <RedirectToSignIn />
+                    </SignedOut>
+                  </>
+                }
             />
           </Routes>
         </Router>

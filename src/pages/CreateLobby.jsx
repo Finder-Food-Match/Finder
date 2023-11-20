@@ -9,12 +9,7 @@ function CreateLobby() {
         <div className="CreateLobbyContainer">
             <h1>Ready to find your restaurant match {user.fullName}?</h1>
             <div className="homeBtnContainer">
-                <button className="homeBtn" onClick={() => navigate("/CreateLobby")}>
-                    Create Lobby
-                </button>
-                <button className="homeBtn" onClick={() => navigate("/CreateLobby")}>
-                    Join Lobby
-                </button>
+
             </div>
             <Navbar />
         </div>

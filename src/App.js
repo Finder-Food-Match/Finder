@@ -9,11 +9,8 @@ import CreateLobby from "./pages/CreateLobby";
 
 import {
   ClerkProvider,
-  SignIn,
   SignedIn,
   SignedOut,
-  UserButton,
-  useUser,
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 

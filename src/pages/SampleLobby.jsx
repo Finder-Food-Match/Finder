@@ -4,27 +4,30 @@ import io from "socket.io-client";
 const socket = io("http://localhost:3001");
 
 function SampleLobby() {
+  //react state and hooks
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
+  //emitting messages from socket.io
+  const sendMessage = () => {
+    socket.emit("send_message", message);
+    setMessage(message);
+  };
+  //console.log
   console.log("these are chats", chat);
+  //message content and setStates
   const onChange = (e) => {
     let sampleChat = e.target.value;
     setMessage(sampleChat);
   };
   useEffect(() => {
-    socket.on("receiveMessage", (msg) => {
-      setChat((prev) => [...prev, msg]);
+    socket.on("receive_message", (data) => {
+      setChat((prev) => [...prev, data]);
     });
 
     return () => {
-      socket.off("receiveMessage");
+      socket.off("receive_message");
     };
   }, []);
-
-  const sendMessage = () => {
-    socket.emit("sendMessage", message);
-    setMessage("");
-  };
 
   return (
     <div>

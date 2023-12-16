@@ -3,11 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Liked from "./pages/Liked";
 import Profile from "./pages/Profile";
-<<<<<<< HEAD
 import SampleLobby from "./pages/SampleLobby";
-=======
+
 import CreateLobby from "./pages/CreateLobby";
->>>>>>> 4ef7359cdd743767f5879b80ba550c6f2120879e
+
 import {
   ClerkProvider,
   SignIn,
@@ -68,7 +67,6 @@ function App() {
               }
             />
             <Route
-<<<<<<< HEAD
               path="/samplelobby"
               element={
                 <>
@@ -80,19 +78,19 @@ function App() {
                   </SignedOut>
                 </>
               }
-=======
-                path="/CreateLobby"
-                element={
-                  <>
-                    <SignedIn>
-                      <CreateLobby/>
-                    </SignedIn>
-                    <SignedOut>
-                      <RedirectToSignIn />
-                    </SignedOut>
-                  </>
-                }
->>>>>>> 4ef7359cdd743767f5879b80ba550c6f2120879e
+            />
+            <Route
+              path="/CreateLobby"
+              element={
+                <>
+                  <SignedIn>
+                    <CreateLobby />
+                  </SignedIn>
+                  <SignedOut>
+                    <RedirectToSignIn />
+                  </SignedOut>
+                </>
+              }
             />
           </Routes>
         </Router>

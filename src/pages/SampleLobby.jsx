@@ -7,6 +7,10 @@ function SampleLobby() {
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
   console.log("these are chats", chat);
+  const onChange = (e) => {
+    let sampleChat = e.target.value;
+    setMessage(sampleChat);
+  };
   useEffect(() => {
     socket.on("receiveMessage", (msg) => {
       setChat((prev) => [...prev, msg]);
@@ -25,11 +29,7 @@ function SampleLobby() {
   return (
     <div>
       <h1>Simple Chat</h1>
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
+      <input type="text" value={message} onChange={onChange} />
       <button onClick={sendMessage}>Send</button>
       <div>
         {chat.map((msg, index) => (

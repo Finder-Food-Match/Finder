@@ -13,8 +13,6 @@ import {
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 
-console.log(currentRestaurant);
-
 function App() {
   const handleSomething = () => {
     console.log("Function called from RestaurantCard");

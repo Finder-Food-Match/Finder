@@ -6,8 +6,8 @@ const socket = io("http://localhost:3001");
 
 function SampleLobby({ RestaurantCard, handleSomething }) {
   //calling from RL
-  const handleRestaurantClick = (restaurantData) => {
-    console.log("Restaurant clicked:", restaurantData);
+  const handleRestaurantClick = (likedRestaurant) => {
+    console.log("Restaurant clicked:", likedRestaurant);
     // Further processing...
   };
 

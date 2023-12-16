@@ -9,6 +9,7 @@ function Home() {
     <>
       <div className="homepageContainer">
         <h1>Welcome to Home Page {user.fullName} </h1>
+
         <div className="profile-container">
           <UserButton />
         </div>

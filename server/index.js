@@ -17,10 +17,14 @@ const io = new Server(server, {
 
 // Set up a Socket.IO connection handler
 io.on("connection", (socket) => {
-  console.log("A user connected");
+  console.log(`A user connected ${socket.id}`);
 
   socket.on("disconnect", () => {
     console.log("A user disconnected");
+  });
+
+  socket.on("send_message", (data) => {
+    socket.broadcast.emit("receive_message", data);
   });
 
   // Example: listening for a message event from the client

@@ -4,7 +4,19 @@ import ResturantList from "../assets/Restaurants";
 
 const socket = io("http://localhost:3001");
 
-function SampleLobby({ RestaurantCard }) {
+function SampleLobby({ RestaurantCard, handleSomething }) {
+  //calling from RL
+  const handleRestaurantClick = (restaurantData) => {
+    console.log("Restaurant clicked:", restaurantData);
+    // Further processing...
+  };
+
+  return (
+    <div>
+      <RestaurantCard handleRestaurantClick={handleRestaurantClick} />
+      {/* other components */}
+    </div>
+  );
   //react state and hooks
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
@@ -32,7 +44,7 @@ function SampleLobby({ RestaurantCard }) {
 
   return (
     <div>
-      <RestaurantCard />
+      <RestaurantCard handleSomething={handleSomething} />
     </div>
   );
 }

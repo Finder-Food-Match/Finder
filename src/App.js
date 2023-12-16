@@ -5,9 +5,7 @@ import Liked from "./pages/Liked";
 import Profile from "./pages/Profile";
 import SampleLobby from "./pages/SampleLobby";
 import RestaurantCard from "./components/RestaurantCard";
-
 import CreateLobby from "./pages/CreateLobby";
-
 import {
   ClerkProvider,
   SignedIn,
@@ -15,7 +13,13 @@ import {
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 
+console.log(currentRestaurant);
+
 function App() {
+  const handleSomething = () => {
+    console.log("Function called from RestaurantCard");
+    // Additional logic...
+  };
   const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
   if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
     throw new Error("Missing Publishable Key");
@@ -69,7 +73,10 @@ function App() {
               element={
                 <>
                   <SignedIn>
-                    <SampleLobby RestaurantCard={RestaurantCard} />
+                    <SampleLobby
+                      handleSomething={handleSomething}
+                      RestaurantCard={RestaurantCard}
+                    />
                   </SignedIn>
                   <SignedOut>
                     <RedirectToSignIn />

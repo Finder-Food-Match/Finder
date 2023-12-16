@@ -2,8 +2,9 @@ import React from "react";
 import RestaurantList from "../assets/Restaurants";
 import { useState } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import SampleLobby from "../pages/SampleLobby";
 
-function RestaurantCard() {
+function RestaurantCard({ handleRestaurantClick }) {
   const [currentRestaurantIndex, setCurrentRestaurantIndex] = useState(0);
 
   const showNextRestaurant = () => {
@@ -12,10 +13,12 @@ function RestaurantCard() {
     );
   };
 
-  const showPreviousRestaurant = () => {
-    setCurrentRestaurantIndex((prevIndex) =>
-      prevIndex === 0 ? RestaurantList.length - 1 : prevIndex - 1
+  const showNextLikedRestaurant = () => {
+    setCurrentRestaurantIndex(
+      (prevIndex) => (prevIndex + 1) % RestaurantList.length
     );
+
+    handleRestaurantClick(currentRestaurant);
   };
 
   const currentRestaurant = RestaurantList[currentRestaurantIndex];
@@ -34,7 +37,7 @@ function RestaurantCard() {
               <FaTimes size={25} />
             </div>
           </button>
-          <button className="likeBtn" onClick={showNextRestaurant}>
+          <button className="likeBtn" onClick={showNextLikedRestaurant}>
             <div className="btnIcons">
               <FaCheck size={25} />
             </div>

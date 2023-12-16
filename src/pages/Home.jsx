@@ -14,10 +14,12 @@ function Home() {
           <UserButton />
         </div>
         <div className="homeBtnContainer">
-          <button className="homeBtn">Swipe</button>
-          <button className="homeBtn" onClick={() => navigate("/profile")}>
-            Profile
-          </button>
+        <button className="homeBtn" onClick={() => navigate("/CreateLobby")}>
+                Join Lobby
+            </button>
+            <button className="homeBtn" onClick={() => navigate("/CreateLobby")}>
+                Create Lobby
+            </button>
         </div>
       </div>
       <Navbar />

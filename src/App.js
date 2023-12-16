@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Liked from "./pages/Liked";
 import Profile from "./pages/Profile";
 import SampleLobby from "./pages/SampleLobby";
+import RestaurantCard from "./components/RestaurantCard";
 
 import CreateLobby from "./pages/CreateLobby";
 
@@ -68,7 +69,7 @@ function App() {
               element={
                 <>
                   <SignedIn>
-                    <SampleLobby />
+                    <SampleLobby RestaurantCard={RestaurantCard} />
                   </SignedIn>
                   <SignedOut>
                     <RedirectToSignIn />

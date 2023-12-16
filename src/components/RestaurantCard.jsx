@@ -1,6 +1,7 @@
 import React from "react";
 import RestaurantList from "../assets/Restaurants";
 import { useState } from "react";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
 function RestaurantCard() {
   const [currentRestaurantIndex, setCurrentRestaurantIndex] = useState(0);
@@ -27,12 +28,18 @@ function RestaurantCard() {
       <p>{currentRestaurant.rating}</p>
       <p>{currentRestaurant.location}</p>
       <div className="navigation-buttons">
-        <button className="likeBtn" onClick={showNextRestaurant}>
-          Dislike
-        </button>
-        <button className="dislikeBtn" onClick={showNextRestaurant}>
-          Like
-        </button>
+        <div className="BtnContainer">
+          <button className="dislikeBtn" onClick={showNextRestaurant}>
+            <div className="btnIcons">
+              <FaTimes size={25} />
+            </div>
+          </button>
+          <button className="likeBtn" onClick={showNextRestaurant}>
+            <div className="btnIcons">
+              <FaCheck size={25} />
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   );

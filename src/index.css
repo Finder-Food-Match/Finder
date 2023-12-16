@@ -139,8 +139,20 @@ button {
 }
 .likeBtn {
   background-color: lightgreen;
+  width: 80px;
+  height: 80px;
 }
 
 .dislikeBtn {
   background-color: lightcoral;
+}
+
+.BtnContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btnIcons {
+  margin: 0 auto 0 auto;
 }

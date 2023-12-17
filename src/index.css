@@ -115,3 +115,44 @@ h1 {
     margin-bottom: 30px;
   }
 }
+
+.messageCard {
+  padding: 10px;
+  border: 2px solid blue;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.card {
+  width: 90%;
+  height: 88vh;
+  background-color: lightblue;
+  margin: 10px auto 10px auto;
+  border-radius: 15px;
+  padding: 20px;
+}
+button {
+  border-radius: 50%; /* Circular shape */
+  width: 40px; /* Width of the button */
+  height: 40px; /* Height of the button */
+  /* Add additional styling as needed */
+}
+.likeBtn {
+  background-color: lightgreen;
+  width: 80px;
+  height: 80px;
+}
+
+.dislikeBtn {
+  background-color: lightcoral;
+}
+
+.BtnContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btnIcons {
+  margin: 0 auto 0 auto;
+}

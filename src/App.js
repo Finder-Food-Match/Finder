@@ -12,6 +12,7 @@ import {
   SignedOut,
   RedirectToSignIn,
 } from "@clerk/clerk-react";
+import Lobby from "./components/Lobby";
 
 function App() {
   const handleSomething = () => {
@@ -66,6 +67,18 @@ function App() {
                 </>
               }
             />
+            <Route path="/lobby/:roomCode"
+                   element={
+              <>
+                <SignedIn>
+                  <Lobby />
+                </SignedIn>
+                <SignedOut>
+                  <RedirectToSignIn />
+                </SignedOut>
+                </>
+                }
+              />
             <Route
               path="/samplelobby"
               element={

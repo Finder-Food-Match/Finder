@@ -14,8 +14,7 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   },
 });
-
-// Set up a Socket.IO connection handler
+const likedRestaurants = new Set();
 io.on("connection", (socket) => {
   console.log(`A user connected ${socket.id}`);
 
@@ -23,16 +22,18 @@ io.on("connection", (socket) => {
     console.log("A user disconnected");
   });
 
-  socket.on("send_message", (data) => {
-    socket.broadcast.emit("receive_message", data);
+  socket.on("restaurant_clicked", (restaurant) => {
+    console.log("Restaurant clicked:", restaurant.name);
+    if (likedRestaurants.has(restaurant.name)) {
+      console.log("Duplicate found");
+      likedRestaurants.clear();
+    } else {
+      likedRestaurants.add(restaurant.name);
+    }
+    socket.broadcast.emit("restaurant_clicked", restaurant);
   });
 
-  // Example: listening for a message event from the client
-  socket.on("message", (message) => {
-    console.log(message);
-    // You can also emit messages to the client
-    io.emit("message", message);
-  });
+  // Other existing socket event handlers...
 });
 
 const PORT = process.env.PORT || 3001;
@@ -40,21 +41,3 @@ server.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });
 
-// const express = require("express");
-// const app = express();
-// const http = require("http");
-// const { Server } = require("socket.io");
-// const cors = require("cors");
-
-// app.use(cors);
-// const server = http.createServer(app);
-// const io = new Server(server, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//     methods: ["GET", "POST"],
-//   },
-// });
-
-// server.listen(3001, () => {
-//   console.log("server is running");
-// });

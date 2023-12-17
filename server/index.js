@@ -24,8 +24,10 @@ io.on("connection", (socket) => {
 
   socket.on("restaurant_clicked", (restaurant) => {
     console.log("Restaurant clicked:", restaurant.name);
+    //adds to likedRestaurants if no duplicate is found
     if (likedRestaurants.has(restaurant.name)) {
       console.log("Duplicate found");
+      io.emit("duplicate_restaurant", restaurant.name); // Emit to all clients
       likedRestaurants.clear();
     } else {
       likedRestaurants.add(restaurant.name);

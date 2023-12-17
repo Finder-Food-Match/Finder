@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserButton, useUser } from "@clerk/clerk-react";
 import io from "socket.io-client";
+import Navbar from "../components/Navbar";
 
 const socket = io("http://localhost:3001");
 
@@ -50,7 +51,7 @@ function Home() {
                     </button>
                 </div>
             </div>
-            {/* Rest of your code */}
+            < Navbar />
         </>
     );
 }

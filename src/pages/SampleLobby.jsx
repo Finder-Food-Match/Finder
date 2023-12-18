@@ -4,36 +4,43 @@ import RestaurantCard from "../components/RestaurantCard"; // Adjust this import
 import Notification from "../components/Notification"; // Import or define this component
 const socket = io("http://localhost:3001");
 
-function SampleLobby({ ResturantCard,handleSomething }) {
+function SampleLobby() {
   const [notification, setNotification] = useState('');
+  // Add state for restaurant details (name, description, etc.)
+  const [restaurant, setRestaurant] = useState({
+    name: "Restaurant Name",
+    description: "Small description about the restaurant.",
+    // Add your image URL here
+    imageUrl: "path/to/image.jpg"
+  });
+
   const handleRestaurantClick = (likedRestaurant) => {
     socket.emit("restaurant_clicked", likedRestaurant);
   };
-  //closes notification
+
   const closeNotification = () => {
     setNotification('');
   };
-  useEffect(() => {
-    socket.on("restaurant_update", (restaurant) => {
-      console.log("Restaurant clicked:", restaurant);
-    });
-    socket.on("duplicate_restaurant", (restaurantName) => {
-      setNotification(`Duplicate found for ${restaurantName}`);
-      // Optionally, clear the notification after a delay
-      //setTimeout(() => setNotification(''), 3000); // Clears after 3 seconds
-    });
-    return () => {
-      socket.off("restaurant_update");
-      socket.off("duplicate_restaurant");
-    };
-  }, []);
+
+  // Similar useEffect for socket events...
 
   return (
-      <div>
-        {notification && <Notification message={notification} onClose={closeNotification} />}
-        <RestaurantCard handleRestaurantClick={handleRestaurantClick} />
-        {/* other components */}
+    <div className="sample-lobby-container">
+      {notification && <Notification message={notification} onClose={closeNotification} />}
+      
+      <div className="restaurant-card">
+        <h1 className="restaurant-name">{restaurant.name}</h1>
+        <img src={restaurant.imageUrl} alt={restaurant.name} className="restaurant-image"/>
+        <p className="restaurant-description">{restaurant.description}</p>
+
+        <div className="action-buttons">
+          <button className="dislike-btn" onClick={() => handleRestaurantClick('dislike')}>Dislike</button>
+          <button className="like-btn" onClick={() => handleRestaurantClick('like')}>Like</button>
+        </div>
       </div>
+
+      {/* Other components... */}
+    </div>
   );
 }
 

@@ -1,8 +1,9 @@
 const express = require("express");
+const app = express();
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
-const app = express();
+
 // Invoke the cors middleware
 app.use(cors());
 
@@ -38,6 +39,9 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("A user disconnected");
   });
+  socket.on("disconnect", () => {
+    console.log("A user disconnected");
+  });
 
   socket.on("restaurant_clicked", (restaurant) => {
     console.log("Restaurant clicked:", restaurant.name);
@@ -51,18 +55,20 @@ io.on("connection", (socket) => {
     }
     socket.broadcast.emit("restaurant_clicked", restaurant);
   });
+
+  // Other existing socket event handlers...
 });
 function generateRoomCode() {
-  let result = '';
-  const characters = '0123456789';
+  let result = "";
+  const characters = "0123456789";
   const charactersLength = characters.length;
   for (let i = 0; i < 5; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
 }
+
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });
-

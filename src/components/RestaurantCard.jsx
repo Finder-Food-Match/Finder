@@ -3,6 +3,7 @@ import RestaurantList from "../assets/Restaurants";
 import { useState } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import SampleLobby from "../pages/SampleLobby";
+import burgerking from "../assets/jpg/burgerking.png";
 
 function RestaurantCard({ handleRestaurantClick }) {
   const [currentRestaurantIndex, setCurrentRestaurantIndex] = useState(0);
@@ -25,19 +26,19 @@ function RestaurantCard({ handleRestaurantClick }) {
 
   return (
     <div className="card">
-      <img src="" alt="" />
+      <img src={burgerking} alt="" />
       <h1>{currentRestaurant.name}</h1>
       <p>{currentRestaurant.description}</p>
       <p>{currentRestaurant.rating}</p>
       <p>{currentRestaurant.location}</p>
       <div className="navigation-buttons">
         <div className="BtnContainer">
-          <button className="dislikeBtn" onClick={showNextRestaurant}>
+          <button className="dislike-btn" onClick={showNextRestaurant}>
             <div className="btnIcons">
               <FaTimes size={25} />
             </div>
           </button>
-          <button className="likeBtn" onClick={showNextLikedRestaurant}>
+          <button className="like-btn" onClick={showNextLikedRestaurant}>
             <div className="btnIcons">
               <FaCheck size={25} />
             </div>

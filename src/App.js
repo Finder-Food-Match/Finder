@@ -67,27 +67,12 @@ function App() {
                 </>
               }
             />
-            <Route path="/lobby/:roomCode"
-                   element={
-              <>
-                <SignedIn>
-                  <Lobby />
-                </SignedIn>
-                <SignedOut>
-                  <RedirectToSignIn />
-                </SignedOut>
-                </>
-                }
-              />
             <Route
-              path="/samplelobby"
+              path="/lobby/:roomCode"
               element={
                 <>
                   <SignedIn>
-                    <SampleLobby
-                      handleSomething={handleSomething}
-                      RestaurantCard={RestaurantCard}
-                    />
+                    <Lobby />
                   </SignedIn>
                   <SignedOut>
                     <RedirectToSignIn />
@@ -95,6 +80,7 @@ function App() {
                 </>
               }
             />
+            <Route path="/samplelobby" element={<></>} />
             <Route
               path="/CreateLobby"
               element={

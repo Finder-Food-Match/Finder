@@ -26,9 +26,9 @@ function RestaurantCard({ handleRestaurantClick }) {
 
   return (
     <div className="card">
-      <img src={burgerking} alt="" />
+      <img width="400px" height="400px" src={currentRestaurant.image} alt="" />
       <h1>{currentRestaurant.name}</h1>
-      <p>{currentRestaurant.description}</p>
+      <p className="restaurant-description">{currentRestaurant.description}</p>
       <p>{currentRestaurant.rating}</p>
       <p>{currentRestaurant.location}</p>
       <div className="navigation-buttons">

@@ -124,12 +124,16 @@ h1 {
 }
 
 .card {
-  width: 90%;
-  height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  height: auto;
   background-color: lightblue;
   margin: 10px auto 10px auto;
   border-radius: 15px;
   padding: 20px;
+  margin-bottom: 100px;
 }
 button {
   border-radius: 50%; /* Circular shape */
@@ -217,7 +221,6 @@ button {
   width: 80px; /* Adjust size as needed */
   height: 80px; /* Adjust size as needed */
   align-items: center;
-  margin-bottom: 200px;
 }
 
 .like-btn {
@@ -232,4 +235,25 @@ button {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+}
+
+@media screen and (min-width: 350px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: auto;
+    background-color: lightblue;
+    margin: 10px auto 10px auto;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (min-width: 10400px) {
+  body {
+    background-color: lightgreen;
+  }
 }
